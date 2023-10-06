@@ -1,0 +1,42 @@
+$colors: (
+  "primary": (
+    400: hsl(36, 87%, 56%),
+    200: hsl(36, 87%, 85%),
+  ),
+
+  "neutral": (
+    900: hsl(0, 0%, 0%),
+    800: hsl(240, 15%, 20%),
+    700: hsl(240, 15%, 15%),
+    300: hsl(214, 30%, 95%),
+    200: hsl(204, 45%, 98%),
+    150: hsl(0, 0%, 98%),
+    100: hsl(0, 0%, 100%),
+  ),
+);
+
+:root {
+  // Font face
+  --ff-primary: "Barlow", sans-serif;
+  --ff-secondary: "Oswald", sans-serif;
+  --ff-tertiary: "inini", serif;
+
+  --ff-body: var(--ff-primary);
+  --ff-headings: var(--ff-secondary);
+  --ff-buttons: var(--ff-tertiary);
+
+  // Font weight
+  --fw-regular: 400;
+
+  //Screen sizes
+  --sz-mobile: 40em;
+  --sz-tablet: 48em;
+  --sz-desktop: 1440px;
+
+  // Colors
+  @each $type, $variants in $colors {
+    @each $variant, $color in $variants {
+      --clr-#{$type}-#{$variant}: #{$color};
+    }
+  }
+}
