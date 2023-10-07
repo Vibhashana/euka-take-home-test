@@ -1,10 +1,10 @@
-import header from "./Header.module.scss";
+import styles from "./Header.module.scss";
 import { logo } from "../../assets/images";
 
 const Header = () => {
   return (
-    <div className={header.wrapper}>
-      <img src={logo} alt="Euka logo" className={header.img} />
+    <div className={styles.wrapper}>
+      <img src={logo} alt="Euka logo" className={styles.img} />
       <span>email</span>
     </div>
   );

@@ -3,3 +3,9 @@
     @content;
   }
 }
+
+@mixin inDarkMode() {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}

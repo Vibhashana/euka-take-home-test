@@ -11,7 +11,7 @@
 }
 
 .flow > * + * {
-  margin-top: var(--_flow-space, 0.5rem);
+  margin-top: var(--_flow-space, 1rem);
 }
 
 .ml-auto {
@@ -24,6 +24,10 @@
 
 .mx-auto {
   margin-inline: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .h-100 {

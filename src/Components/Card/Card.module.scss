@@ -1,0 +1,14 @@
+.wrapper {
+  --_card-padding: 1.5rem;
+
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid var(--clr-neutral-300);
+  height: 100%;
+  padding: var(--_card-padding);
+  transition: border 0.2s ease-in-out;
+
+  &:hover {
+    border-color: var(--clr-primary-200);
+  }
+}

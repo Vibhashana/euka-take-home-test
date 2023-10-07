@@ -51,6 +51,13 @@ video {
   max-width: 100%;
 }
 
+input,
+button {
+  background-color: transparent;
+  border: 0;
+  text-align: start;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
@@ -69,9 +76,4 @@ video {
 ::selection {
   background-color: var(--clr-primary-400);
   color: var(--clr-neutral-100);
-}
-
-*:focus-visible {
-  outline: 2px dashed currentColor;
-  outline-offset: 0.25em;
 }
