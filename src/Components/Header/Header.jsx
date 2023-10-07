@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className={styles.wrapper}>
       <img src={logo} alt="Euka logo" className={styles.img} />
-      <span>email</span>
+      <span className={styles.email}>sahan@gmail.com</span>
     </div>
   );
 };

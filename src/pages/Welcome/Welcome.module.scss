@@ -1,0 +1,18 @@
+.divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &::before,
+  &::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background-color: var(--clr-neutral-300);
+  }
+}
+
+.dividerText {
+  color: var(--clr-neutral-300);
+  padding-inline: 0.5em;
+}

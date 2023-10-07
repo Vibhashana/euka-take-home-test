@@ -1,0 +1,11 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--clr-neutral-100);
+  border: 1px solid var(--clr-neutral-300);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}

@@ -1,3 +1,4 @@
 import Button from "./Button";
+import AuthButton from "./AuthButton";
 
-export default Button;
+export { Button, AuthButton };

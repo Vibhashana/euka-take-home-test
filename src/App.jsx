@@ -10,11 +10,13 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/grade" element={<Grade />} />
-        <Route path="/Term" element={<Term />} />
-      </Routes>
+      <div className="page">
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/grade" element={<Grade />} />
+          <Route path="/Term" element={<Term />} />
+        </Routes>
+      </div>
     </Router>
   );
 };

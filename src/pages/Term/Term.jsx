@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import Card from "../../Components/Card";
 import content from "../../contents/term";
 import styles from "./Term.module.scss";
+import Card from "../../Components/Card";
+import BottomNav from "../../Components/BottomNav";
 
 const Term = () => {
   const [data, setData] = useState([]);
@@ -15,8 +16,8 @@ const Term = () => {
       <h1 className="text-center">{data.title}</h1>
       {data.description && <p>{data.description}</p>}
       <div className={styles.wrapper}>
-        {data.terms?.map((term, key) => (
-          <button type="button" key={`term-${key}`} className={styles.item}>
+        {data.terms?.map((term) => (
+          <button type="button" key={term.name} className={styles.item}>
             <Card>
               {term.promotion && (
                 <span className={styles.promotion}>{term.promotion}</span>
@@ -33,6 +34,7 @@ const Term = () => {
           </button>
         ))}
       </div>
+      <BottomNav />
     </div>
   );
 };

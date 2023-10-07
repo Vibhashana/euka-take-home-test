@@ -3,6 +3,7 @@ import styles from "./Grade.module.scss";
 import content from "../../contents/grade";
 import Card from "../../Components/Card";
 import Pill from "../../Components/Pill";
+import BottomNav from "../../Components/BottomNav";
 
 const Grade = () => {
   const [data, setData] = useState([]);
@@ -17,8 +18,8 @@ const Grade = () => {
       {data.description && <p>{data.description}</p>}
 
       <div className={styles.wrapper}>
-        {data.grades?.map((grade, key) => (
-          <button type="button" key={`grade-${key}`} className={styles.item}>
+        {data.grades?.map((grade) => (
+          <button type="button" key={grade.name} className={styles.item}>
             <Card>
               <div className={styles.inner}>
                 <h2 className={styles.title}>{grade.title}</h2>
@@ -30,6 +31,7 @@ const Grade = () => {
           </button>
         ))}
       </div>
+      <BottomNav />
     </div>
   );
 };
