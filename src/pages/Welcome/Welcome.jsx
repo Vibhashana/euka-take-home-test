@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { Button, AuthButton } from "./../../Components/Button";
 import Input from "../../Components/Input";
 import { useNavigate } from "react-router-dom";
+import useStore from "../../store/store";
 
 const Welcome = () => {
+  const { email, setEmail, newsletter, setNewsletter } = useStore();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -16,6 +18,10 @@ const Welcome = () => {
 
   const handleNext = () => {
     navigateTo("/grade");
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
   return (
@@ -31,15 +37,23 @@ const Welcome = () => {
             id="email"
             label="Email Address"
             autoComplete="email"
+            value={email}
+            onChange={handleEmailChange}
           />
         </div>
         <div>
-          <input type="checkbox" name="newsletter" id="newsletter" />
+          <input
+            type="checkbox"
+            name="newsletter"
+            id="newsletter"
+            onChange={() => setNewsletter(!newsletter)}
+            checked={newsletter}
+          />
           <label htmlFor="newsletter">
             Keep me up to date on news and exclusive offers
           </label>
         </div>
-        <Button variant="primary" onClick={handleNext}>
+        <Button variant="primary" onClick={handleNext} disabled={email === ""}>
           Next
         </Button>
       </form>

@@ -1,11 +1,26 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "./../Button";
 
-const BottomNav = () => {
+const BottomNav = ({ back, isBackBlocked, next, isNextBlocked }) => {
+  const navigateTo = useNavigate();
+
   return (
     <>
       <div className="flex space-between">
-        <Button variant="secondary">Back</Button>
-        <Button variant="primary">Next</Button>
+        <Button
+          variant="secondary"
+          onClick={() => navigateTo(back)}
+          disabled={isBackBlocked}
+        >
+          Back
+        </Button>
+        <Button
+          variant="primary"
+          onClick={() => navigateTo(next)}
+          disabled={isNextBlocked}
+        >
+          Next
+        </Button>
       </div>
     </>
   );
