@@ -12,9 +12,22 @@ const Term = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (grade === "") navigateTo("/grade");
+    // if (grade === "") {
+    //   navigateTo("/grade");
+    // }
+
     setData(content);
+
+    const savedTerm = localStorage.getItem("term");
+
+    if (savedTerm) {
+      setTerm(savedTerm);
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("term", term);
+  }, [term]);
 
   return (
     <div className="container | flow">
@@ -22,13 +35,12 @@ const Term = () => {
       {data.description && <p>{data.description}</p>}
       <div className={styles.wrapper}>
         {data.terms?.map((termItem) => (
-          <button
-            type="button"
-            key={termItem.name}
-            className={styles.item}
-            onClick={() => setTerm(termItem.name)}
-          >
-            <Card selected={term === termItem.name}>
+          <Card selected={term === termItem.name} key={termItem.name}>
+            <button
+              type="button"
+              className={styles.item}
+              onClick={() => setTerm(termItem.name)}
+            >
               {termItem.promotion && (
                 <span className={styles.promotion}>{termItem.promotion}</span>
               )}
@@ -40,11 +52,11 @@ const Term = () => {
                   <li key={`benefit-${key}`}>{benefit}</li>
                 ))}
               </ul>
-            </Card>
-          </button>
+            </button>
+          </Card>
         ))}
       </div>
-      <BottomNav back="/grade" next="/congrats" isNextBlocked={term === ""} />
+      <BottomNav back="/grade" next="/success" isNextBlocked={term === ""} />
     </div>
   );
 };

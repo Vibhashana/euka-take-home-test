@@ -12,7 +12,23 @@ const Welcome = () => {
 
   useEffect(() => {
     setData(content);
+
+    const savedEmail = localStorage.getItem("email");
+    const savedNewsletter = localStorage.getItem("newsletter");
+
+    if (savedEmail !== "") {
+      setEmail(savedEmail);
+    }
+
+    if (savedNewsletter !== "") {
+      setNewsletter(savedNewsletter);
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("email", email);
+    localStorage.setItem("newsletter", newsletter);
+  }, [email, newsletter]);
 
   const navigateTo = useNavigate();
 
@@ -47,13 +63,18 @@ const Welcome = () => {
             name="newsletter"
             id="newsletter"
             onChange={() => setNewsletter(!newsletter)}
-            checked={newsletter}
+            checked={newsletter == true}
           />
           <label htmlFor="newsletter">
             Keep me up to date on news and exclusive offers
           </label>
         </div>
-        <Button variant="primary" onClick={handleNext} disabled={email === ""}>
+        <Button
+          variant="primary"
+          size="full"
+          onClick={handleNext}
+          disabled={email === ""}
+        >
           Next
         </Button>
       </form>

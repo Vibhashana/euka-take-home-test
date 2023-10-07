@@ -8,12 +8,14 @@
   padding: var(--_card-padding);
   transition: border 0.2s ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus-within {
     border-color: var(--clr-primary-200);
   }
 }
 
 .selected {
   composes: wrapper;
-  border-color: var(--clr-primary-400);
+  border-color: var(--clr-primary-400) !important;
+  pointer-events: none;
 }

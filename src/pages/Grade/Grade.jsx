@@ -9,13 +9,37 @@ import { useNavigate } from "react-router-dom";
 
 const Grade = () => {
   const navigateTo = useNavigate();
-  const { grade, setGrade, email } = useStore();
+  const {
+    email,
+    setEmail,
+    newsletter,
+    setNewsletter,
+    grade,
+    setGrade,
+    term,
+    setTerm,
+  } = useStore();
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (email === "") navigateTo("/");
     setData(content);
+
+    const savedGrade = localStorage.getItem("grade");
+    const savedEmail = localStorage.getItem("email");
+
+    if (savedGrade) {
+      setGrade(savedGrade);
+    }
+
+    // if (savedEmail === "") {
+    //   navigateTo("/");
+    // }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("grade", grade);
+    localStorage.setItem("email", email);
+  }, [grade, email]);
 
   return (
     <div className="container | flow">
@@ -24,21 +48,20 @@ const Grade = () => {
 
       <div className={styles.wrapper}>
         {data.grades?.map((gradeItem) => (
-          <button
-            type="button"
-            key={gradeItem.name}
-            className={styles.item}
-            onClick={() => setGrade(gradeItem.name)}
-          >
-            <Card selected={grade === gradeItem.name}>
+          <Card selected={grade === gradeItem.name} key={gradeItem.name}>
+            <button
+              type="button"
+              className={styles.item}
+              onClick={() => setGrade(gradeItem.name)}
+            >
               <div className={styles.inner}>
                 <h2 className={styles.title}>{gradeItem.title}</h2>
                 <p className={styles.description}>{gradeItem.description}</p>
                 <img src={gradeItem.icon} alt="" className={styles.icon} />
                 <Pill content={gradeItem.label} className="mt-auto" />
               </div>
-            </Card>
-          </button>
+            </button>
+          </Card>
         ))}
       </div>
       <BottomNav back="/" next="/term" isNextBlocked={grade === ""} />

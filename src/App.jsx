@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Grade from "./pages/Grade";
 import Term from "./pages/Term";
-import Congrats from "./pages/Congrats";
+import Success from "./pages/Success";
 import Header from "./Components/Header";
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
           <Route path="/" element={<Welcome />} />
           <Route path="/grade" element={<Grade />} />
           <Route path="/term" element={<Term />} />
-          <Route path="/congrats" element={<Congrats />} />
+          <Route path="/success" element={<Success />} />
         </Routes>
       </div>
     </Router>
