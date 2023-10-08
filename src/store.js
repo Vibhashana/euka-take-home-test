@@ -15,12 +15,15 @@ const useStore = create((set) => ({
   },
 
   setUserData: (step, data) =>
-    set((state) => ({
-      userData: {
+    set((state) => {
+      const updatedUserData = {
         ...state.userData,
         [step]: data,
-      },
-    })),
+      };
+
+      localStorage.setItem("userData", JSON.stringify(updatedUserData));
+      return { userData: updatedUserData };
+    }),
 }));
 
 export default useStore;

@@ -15,10 +15,6 @@ const Term = () => {
     setData(content);
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("userData", JSON.stringify(userData));
-  }, [userData]);
-
   return (
     <div className="container | flow">
       <h1 className="text-center">{data.title}</h1>

@@ -26,8 +26,6 @@ const Welcome = () => {
     e.preventDefault();
 
     if (error === "") {
-      localStorage.setItem("email", JSON.stringify(userData.email));
-      localStorage.setItem("newsletter", JSON.stringify(userData.newsletter));
       navigateTo("/grade");
     }
   };
