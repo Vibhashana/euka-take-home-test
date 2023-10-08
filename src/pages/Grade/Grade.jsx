@@ -57,7 +57,13 @@ const Grade = () => {
               <div className={styles.inner}>
                 <h2 className={styles.title}>{gradeItem.title}</h2>
                 <p className={styles.description}>{gradeItem.description}</p>
-                <img src={gradeItem.icon} alt="" className={styles.icon} />
+                <img
+                  src={gradeItem.icon}
+                  alt=""
+                  className={styles.icon}
+                  width={64}
+                  height={64}
+                />
                 <Pill content={gradeItem.label} className="mt-auto" />
               </div>
             </button>

@@ -5,11 +5,15 @@
 }
 
 .input {
-  border: 2px solid var(--clr-neutral-600);
+  border: 2px solid var(--clr-neutral-400);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   width: 100%;
   transition: border-color 0.2s ease-in-out;
+
+  &:hover {
+    border-color: var(--clr-neutral-600);
+  }
 
   &:active,
   &:focus-visible {
