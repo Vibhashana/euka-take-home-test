@@ -5,6 +5,7 @@ import { Button, AuthButton } from "./../../Components/Button";
 import Input from "../../Components/Input";
 import { useNavigate } from "react-router-dom";
 import useStore from "../../store/store";
+import Checkbox from "../../Components/Checkbox";
 
 const Welcome = () => {
   const { email, setEmail, newsletter, setNewsletter } = useStore();
@@ -16,11 +17,11 @@ const Welcome = () => {
     const savedEmail = localStorage.getItem("email");
     const savedNewsletter = localStorage.getItem("newsletter");
 
-    if (savedEmail !== "") {
+    if (savedEmail) {
       setEmail(savedEmail);
     }
 
-    if (savedNewsletter !== "") {
+    if (savedNewsletter) {
       setNewsletter(savedNewsletter);
     }
   }, []);
@@ -41,7 +42,7 @@ const Welcome = () => {
   };
 
   return (
-    <div className="container | flow">
+    <div className={`container | flow ${styles.container}`}>
       <h1 className="text-center">{data.title}</h1>
       <p className="text-center">{data.description}</p>
       <form action="" className="flow">
@@ -58,16 +59,13 @@ const Welcome = () => {
           />
         </div>
         <div>
-          <input
-            type="checkbox"
+          <Checkbox
             name="newsletter"
             id="newsletter"
             onChange={() => setNewsletter(!newsletter)}
             checked={newsletter == true}
+            label="Keep me up to date on news and exclusive offers"
           />
-          <label htmlFor="newsletter">
-            Keep me up to date on news and exclusive offers
-          </label>
         </div>
         <Button
           variant="primary"

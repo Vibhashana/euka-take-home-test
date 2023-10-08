@@ -44,6 +44,7 @@ body {
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
   background-color: var(--clr-neutral-100);
+  color: var(--clr-neutral-700);
 }
 
 /* responsive images/videos */
@@ -60,6 +61,19 @@ button {
   background-color: transparent;
   border: 0;
   text-align: start;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-accent-400);
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,9 +1,13 @@
+@use "../../sass/abstract/mixins" as *;
+
 .wrapper {
   --_flow-space: 1.5rem;
   display: grid;
   gap: 1.5rem;
 
-  grid-template-columns: repeat(2, 1fr);
+  @include mediaQuery(40rem) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .item {
@@ -33,11 +37,15 @@
 }
 
 .promotion {
-  --_color-start: skyblue;
-  --_color-end: skyblue;
+  --_color-start: var(--clr-accent-400);
+  --_color-end: var(--clr-accent-300);
 
   position: absolute;
-  background-color: var(--_color-start);
+  background: linear-gradient(
+    45deg,
+    var(--_color-start) 0%,
+    var(--_color-end) 100%
+  );
   padding: 0.25em 0.75em;
   border-radius: 2rem;
   color: var(--clr-neutral-100);

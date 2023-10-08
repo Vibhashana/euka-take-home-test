@@ -5,6 +5,7 @@
   padding: 0.75em 1.5em;
   font-size: 1rem;
   font-weight: var(--fw-bold);
+  text-align: center;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -28,7 +29,7 @@
     background-color: var(--clr-neutral-700);
     color: var(--clr-neutral-200);
     cursor: not-allowed;
-    opacity: 0.8;
+    opacity: 0.4;
   }
 }
 
@@ -38,7 +39,7 @@
   color: var(--clr-neutral-800);
 
   &:hover {
-    border-color: var(--clr-neutral-900);
+    background-color: var(--clr-primary-400);
     color: var(--clr-neutral-900);
   }
 
@@ -51,6 +52,5 @@
 }
 
 .full {
-  text-align: center;
   width: 100%;
 }

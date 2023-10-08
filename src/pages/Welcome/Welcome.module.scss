@@ -1,4 +1,11 @@
+.container {
+  --_max-width: 30rem;
+  --_flow-space: 1rem;
+}
+
 .divider {
+  --_divider-color: var(--clr-neutral-600);
+
   position: relative;
   display: flex;
   align-items: center;
@@ -8,11 +15,11 @@
     content: "";
     height: 1px;
     flex: 1;
-    background-color: var(--clr-neutral-300);
+    background-color: var(--_divider-color);
   }
 }
 
 .dividerText {
-  color: var(--clr-neutral-300);
+  color: var(--_divider-color);
   padding-inline: 0.5em;
 }

@@ -5,6 +5,7 @@ import seniorIcon from "./euka-senior-icon.png";
 import googleIcon from "./google_logo.svg";
 import microsoftIcon from "./microsoft_logo.svg";
 import appleIcon from "./apple_logo.svg";
+import success from "./success.jpg";
 
 export {
   logo,
@@ -14,4 +15,5 @@ export {
   googleIcon,
   microsoftIcon,
   appleIcon,
+  success,
 };

@@ -25,7 +25,7 @@ export default {
       description:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet illo aliquam nobis, velit magnam quo nesciunt dicta.",
       icon: seniorIcon,
-      label: "Grade 11 to & 12",
+      label: "Grade 11 & 12",
     },
   ],
 };

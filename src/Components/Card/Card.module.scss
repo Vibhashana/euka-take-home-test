@@ -3,10 +3,10 @@
 
   position: relative;
   border-radius: 1rem;
-  border: 2px solid var(--clr-neutral-300);
+  border: 2px solid var(--clr-neutral-400);
   height: 100%;
   padding: var(--_card-padding);
-  transition: border 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out;
 
   &:hover,
   &:focus-within {

@@ -4,6 +4,7 @@ import content from "../../contents/success";
 import { Button } from "../../Components/Button";
 import useStore from "../../store/store";
 import { useNavigate } from "react-router-dom";
+import { success } from "../../assets/images";
 
 const Success = () => {
   const [data, setData] = useState([]);
@@ -30,6 +31,7 @@ const Success = () => {
 
   return (
     <div className="container | flow">
+      <img src={success} alt="" height={117} className="mx-auto" />
       <h1 className="text-center">{data.title}</h1>
       {data.description && (
         <p className={styles.description}>{data.description}</p>
