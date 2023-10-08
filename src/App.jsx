@@ -6,9 +6,9 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <div className="page">
+      <main className="page">
         <PageRoutes />
-      </div>
+      </main>
     </Router>
   );
 };

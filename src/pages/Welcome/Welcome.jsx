@@ -41,8 +41,6 @@ const Welcome = () => {
     setUserData("email", e.target.value);
   };
 
-  console.log(userData);
-
   return (
     <div className={`container | flow ${styles.container}`}>
       <h1 className="text-center">{data.title}</h1>

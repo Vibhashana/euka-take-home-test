@@ -1,9 +1,9 @@
 @font-face {
   font-family: "infini";
   src:
-    local("Infini Regular"),
-    url("../../assets/fonts/infini-romain-webfont.woff2") format("woff2"),
-    url("../../assets/fonts/infini-romain-webfont.woff") format("woff");
+    // local("Infini Regular"),
+    url("../src/assets/fonts/infini-romain-webfont.woff2") format("woff2"),
+    url("../src/assets/fonts/infini-romain-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
