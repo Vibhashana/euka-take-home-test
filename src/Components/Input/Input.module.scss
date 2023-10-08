@@ -20,3 +20,15 @@
     border-color: var(--clr-neutral-700);
   }
 }
+
+.error {
+  font-size: 0.875rem;
+  color: var(--clr-error-500);
+}
+
+.hasError {
+  composes: input;
+  border-color: var(--clr-error-500) !important;
+  // background-color: var(--clr-error-300);
+  color: var(--clr-error-500);
+}

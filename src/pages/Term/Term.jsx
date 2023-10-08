@@ -3,31 +3,21 @@ import content from "../../contents/term";
 import styles from "./Term.module.scss";
 import Card from "../../Components/Card";
 import BottomNav from "../../Components/BottomNav";
-import useStore from "../../store/store";
+import useStore from "../../store";
 import { useNavigate } from "react-router-dom";
 
 const Term = () => {
   const navigateTo = useNavigate();
-  const { term, setTerm, grade } = useStore();
+  const { userData, setUserData } = useStore();
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // if (grade === "") {
-    //   navigateTo("/grade");
-    // }
-
     setData(content);
-
-    const savedTerm = localStorage.getItem("term");
-
-    if (savedTerm) {
-      setTerm(savedTerm);
-    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("term", term);
-  }, [term]);
+    localStorage.setItem("userData", JSON.stringify(userData));
+  }, [userData]);
 
   return (
     <div className="container | flow">
@@ -35,11 +25,11 @@ const Term = () => {
       {data.description && <p>{data.description}</p>}
       <div className={styles.wrapper}>
         {data.terms?.map((termItem) => (
-          <Card selected={term === termItem.name} key={termItem.name}>
+          <Card selected={userData.term === termItem.name} key={termItem.name}>
             <button
               type="button"
               className={styles.item}
-              onClick={() => setTerm(termItem.name)}
+              onClick={() => setUserData("term", termItem.name)}
             >
               {termItem.promotion && (
                 <span className={styles.promotion}>{termItem.promotion}</span>
@@ -56,7 +46,11 @@ const Term = () => {
           </Card>
         ))}
       </div>
-      <BottomNav back="/grade" next="/success" isNextBlocked={term === ""} />
+      <BottomNav
+        back="/grade"
+        next="/success"
+        isNextBlocked={userData.term === ""}
+      />
     </div>
   );
 };

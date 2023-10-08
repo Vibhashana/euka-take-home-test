@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import styles from "./Success.module.scss";
 import content from "../../contents/success";
 import { Button } from "../../Components/Button";
-import useStore from "../../store/store";
+import useStore from "../../store";
 import { useNavigate } from "react-router-dom";
 import { success } from "../../assets/images";
 
 const Success = () => {
   const [data, setData] = useState([]);
-  const { setEmail, setNewsletter, setGrade, setTerm } = useStore();
+  const { userData, setUserData } = useStore();
   const navigateTo = useNavigate();
 
   useEffect(() => {
@@ -16,15 +16,12 @@ const Success = () => {
   }, []);
 
   const handleOnClick = () => {
-    setEmail("");
-    setNewsletter(false);
-    setGrade("");
-    setTerm("");
+    setUserData("email", "");
+    setUserData("newsletter", false);
+    setUserData("grade", "");
+    setUserData("term", "");
 
-    localStorage.removeItem("email");
-    localStorage.removeItem("newsletter");
-    localStorage.removeItem("grade");
-    localStorage.removeItem("term");
+    localStorage.removeItem("userData");
 
     navigateTo("/");
   };

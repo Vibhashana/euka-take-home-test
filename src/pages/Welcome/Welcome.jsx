@@ -4,42 +4,46 @@ import { useEffect, useState } from "react";
 import { Button, AuthButton } from "./../../Components/Button";
 import Input from "../../Components/Input";
 import { useNavigate } from "react-router-dom";
-import useStore from "../../store/store";
+import useStore from "../../store";
 import Checkbox from "../../Components/Checkbox";
 
 const Welcome = () => {
-  const { email, setEmail, newsletter, setNewsletter } = useStore();
+  const navigateTo = useNavigate();
+  const { userData, setUserData } = useStore();
   const [data, setData] = useState([]);
+  const [error, setError] = useState("");
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
   useEffect(() => {
     setData(content);
-
-    const savedEmail = localStorage.getItem("email");
-    const savedNewsletter = localStorage.getItem("newsletter");
-
-    if (savedEmail) {
-      setEmail(savedEmail);
-    }
-
-    if (savedNewsletter) {
-      setNewsletter(savedNewsletter);
-    }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("email", email);
-    localStorage.setItem("newsletter", newsletter);
-  }, [email, newsletter]);
+  const isValidEmail = (email) => {
+    return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+  };
 
-  const navigateTo = useNavigate();
+  const handleNext = (e) => {
+    e.preventDefault();
 
-  const handleNext = () => {
-    navigateTo("/grade");
+    if (error === "") {
+      localStorage.setItem("email", JSON.stringify(userData.email));
+      localStorage.setItem("newsletter", JSON.stringify(userData.newsletter));
+      navigateTo("/grade");
+    }
   };
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    if (!isValidEmail(e.target.value)) {
+      setError("Please enter a valid email address");
+      setIsSubmitDisabled(true);
+    } else {
+      setError("");
+      setIsSubmitDisabled(false);
+    }
+    setUserData("email", e.target.value);
   };
+
+  console.log(userData);
 
   return (
     <div className={`container | flow ${styles.container}`}>
@@ -54,24 +58,26 @@ const Welcome = () => {
             id="email"
             label="Email Address"
             autoComplete="email"
-            value={email}
+            value={userData.email}
             onChange={handleEmailChange}
+            error={error}
           />
         </div>
         <div>
           <Checkbox
             name="newsletter"
             id="newsletter"
-            onChange={() => setNewsletter(!newsletter)}
-            checked={newsletter == true}
+            onChange={() => setUserData("newsletter", !userData.newsletter)}
+            checked={userData.newsletter == true}
             label="Keep me up to date on news and exclusive offers"
           />
         </div>
         <Button
+          type="submit"
           variant="primary"
           size="full"
           onClick={handleNext}
-          disabled={email === ""}
+          disabled={isSubmitDisabled && userData.email === ""}
         >
           Next
         </Button>

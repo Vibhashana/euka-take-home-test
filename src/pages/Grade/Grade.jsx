@@ -4,42 +4,21 @@ import content from "../../contents/grade";
 import Card from "../../Components/Card";
 import Pill from "../../Components/Pill";
 import BottomNav from "../../Components/BottomNav";
-import useStore from "../../store/store";
+import useStore from "../../store";
 import { useNavigate } from "react-router-dom";
 
 const Grade = () => {
   const navigateTo = useNavigate();
-  const {
-    email,
-    setEmail,
-    newsletter,
-    setNewsletter,
-    grade,
-    setGrade,
-    term,
-    setTerm,
-  } = useStore();
+  const { userData, setUserData } = useStore();
   const [data, setData] = useState([]);
 
   useEffect(() => {
     setData(content);
-
-    const savedGrade = localStorage.getItem("grade");
-    const savedEmail = localStorage.getItem("email");
-
-    if (savedGrade) {
-      setGrade(savedGrade);
-    }
-
-    // if (savedEmail === "") {
-    //   navigateTo("/");
-    // }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("grade", grade);
-    localStorage.setItem("email", email);
-  }, [grade, email]);
+    localStorage.setItem("userData", JSON.stringify(userData));
+  }, [userData]);
 
   return (
     <div className="container | flow">
@@ -48,11 +27,14 @@ const Grade = () => {
 
       <div className={styles.wrapper}>
         {data.grades?.map((gradeItem) => (
-          <Card selected={grade === gradeItem.name} key={gradeItem.name}>
+          <Card
+            selected={userData.grade === gradeItem.name}
+            key={gradeItem.name}
+          >
             <button
               type="button"
               className={styles.item}
-              onClick={() => setGrade(gradeItem.name)}
+              onClick={() => setUserData("grade", gradeItem.name)}
             >
               <div className={styles.inner}>
                 <h2 className={styles.title}>{gradeItem.title}</h2>
@@ -70,7 +52,7 @@ const Grade = () => {
           </Card>
         ))}
       </div>
-      <BottomNav back="/" next="/term" isNextBlocked={grade === ""} />
+      <BottomNav back="/" next="/term" isNextBlocked={userData.grade === ""} />
     </div>
   );
 };

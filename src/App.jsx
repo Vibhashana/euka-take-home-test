@@ -1,9 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import Welcome from "./pages/Welcome";
-import Grade from "./pages/Grade";
-import Term from "./pages/Term";
-import Success from "./pages/Success";
+import { BrowserRouter as Router } from "react-router-dom";
+import PageRoutes from "./PageRoutes";
 import Header from "./Components/Header";
 
 const App = () => {
@@ -11,12 +7,7 @@ const App = () => {
     <Router>
       <Header />
       <div className="page">
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/grade" element={<Grade />} />
-          <Route path="/term" element={<Term />} />
-          <Route path="/success" element={<Success />} />
-        </Routes>
+        <PageRoutes />
       </div>
     </Router>
   );

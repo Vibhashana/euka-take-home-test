@@ -25,10 +25,10 @@ const Input = ({
         placeholder={placeholder}
         onChange={onChange}
         disabled={disabled}
-        className={styles.input}
+        className={error ? styles.hasError : styles.input}
         {...rest}
       />
-      {error && <span>{error}</span>}
+      {error && <span className={styles.error}>{error}</span>}
     </>
   );
 };
